@@ -79,6 +79,9 @@
                     <a href="{{route('admin.testimonial.index')}}" class="{{(\Request::route()->getName() == 'admin.testimonial.index' || \Request::route()->getName() == 'admin.testimonial.edit' || \Request::route()->getName() == 'admin.testimonial.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">testimonial Management</span></a>
                 </li>
                 <li>
+                    <a href="{{route('admin.pricing.index')}}" class="{{(\Request::route()->getName() == 'admin.pricing.index' || \Request::route()->getName() == 'admin.pricing.edit' || \Request::route()->getName() == 'admin.pricing.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">pricing Management</span></a>
+                </li>
+                <li>
                     <a href="{{route('admin.city.index')}}" class="{{(\Request::route()->getName() == 'admin.city.index' || \Request::route()->getName() == 'admin.city.edit' || \Request::route()->getName() == 'admin.city.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Cities Management</span></a>
                 </li>
                      

@@ -24,6 +24,7 @@ Route::any('/contact-us', 'web\HomeController@contactUsPage')->name('contactUsPa
 Route::any('/about', 'web\HomeController@about')->name('about');
 Route::any('/gallery', 'web\HomeController@Gallery')->name('gallery');
 Route::any('/service', 'web\HomeController@Service')->name('service');
+Route::any('/pricing', 'web\HomeController@pricing')->name('pricing');
 // Route::any('/service', 'web\HomeController@fulfilment')->name('fulfilment');
 Route::get('/account/login', 'web\HomeController@accountLoginPage')->name('accountLoginPage');
 Route::post('newsletter', 'web\HomeController@newsletter')->name('newsletter');
@@ -74,6 +75,7 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::get('subscriptions', 'Admin\FinanceController@subscriptions')->name('subscriptions');
         Route::get('service/{id}/feature', 'Admin\ServiceController@feature')->name('service.feature');
         Route::get('fulfilment/{id}/feature', 'Admin\FulfilmentController@feature')->name('fulfilment.feature');
+        Route::get('pricing/{id}/feature', 'Admin\FulfilmentController@feature')->name('pricing.feature');
         Route::get('feature/{id}/feature', 'Admin\TestimonialController@feature')->name('testimonial.feature');
         Route::resource('gallery', 'Admin\GalleryController');
         Route::post('gallery/upload/{id}', 'Admin\GalleryController@uploadGallery')->name('gallery.upload');
@@ -91,6 +93,7 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::resource('city', 'Admin\CityController');
         Route::resource('fulfilment', 'Admin\FulfilmentController');
         Route::resource('testimonial', 'Admin\TestimonialController');
+        Route::resource('pricing', 'Admin\PricingController');
     });
     Route::group(['middleware' => 'role:Administrator,Seller'], function () {
         Route::resource('product', 'Admin\ProductController');

@@ -15,9 +15,9 @@ use App\Banner;
 use App\Product;
 use App\Gallery;
 use App\Supplier;
-use App\Slider;
-use App\Fulfilment;
+use App\Pricing;
 use App\Testimonial;
+use App\Fulfilment;
 
 use App\NewsLetter;
 use App\Service;
@@ -78,6 +78,14 @@ class HomeController extends Controller
 
         // dd($fulfilment);
        return view('front.service',compact('banner','services','fulfilment','testimonial'));
+    }
+    public function pricing()
+    {
+       
+        $banner= Banner::where('page','Services Page')->first();
+        $pricing=Pricing::all();
+        // dd($fulfilment);
+       return view('front.pricing',compact('banner','pricing'));
     }
    
     public function supplier()
