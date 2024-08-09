@@ -1,7 +1,6 @@
 @extends('layouts.admin.app')
 @section('title', 'Content Management')
 @section('css')
-
 @endsection
 @section('content')
     <div class="content">
@@ -69,6 +68,7 @@
                     && !jQuery(e.target).parent('label').length) {
                     let row    = jQuery(e.currentTarget);
                     let tbody  = row.parent('tbody');
+                    let
 
                     if (!tbody.hasClass('show')) {
                         jQuery('tbody', table).removeClass('show table-active');

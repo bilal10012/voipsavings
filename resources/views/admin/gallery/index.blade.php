@@ -28,30 +28,53 @@
 @endsection
 @section('content')
     <div class="content">
-        <h2 class="content-heading">Gallery Management <a href="{{route('admin.gallery.create')}}" class="btn btn-alt-primary pull-right">Add New Image</a></h2>
-        <div class="row gutters-tiny">
-        @foreach($gallery_images as $image)
-        <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
-            <div class="options-container fx-item-zoom-in fx-overlay-slide-down">
-                <img class="img-fluid options-item" src="{{ asset($image->primary_image) }}"style="width:287px;height:227px;" alt="">
-                <div class="options-overlay bg-black-op-75">
-                    <div class="options-overlay-content">
-                        <a class="btn btn-sm btn-rounded btn-noborder btn-alt-success min-width-65" href="{{route('admin.gallery.edit', $image->id)}}" data-toggle="tooltip" title="Edit Image"><i class="fa fa-pencil"></i> </a>
+        <h2 class="content-heading">Slider Management <a href="{{route('admin.gallery.create')}}" class="btn btn-alt-primary pull-right">Add New Image</a></h2>
+        <div class="content">
+            {{-- <h2 class="content-heading">Manage Sliders</h2> --}}
 
-                        <a class="btn btn-sm btn-rounded btn-noborder btn-alt-danger min-width-65" href="javascript:;" onclick="if(confirm('Are you sure about deleting this Image?') == true) document.getElementById('delete-'+{{$image->id}}).submit();" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete Image">
-                                    <i class="fa fa-trash text-danger"></i> 
-                                </a>
-                        <!-- <a class="btn btn-sm btn-rounded btn-noborder btn-alt-danger min-width-75" href="{{ url('panel/image/delete',$image->id) }}"><i class="fa fa-trash"></i> Delete</a> -->
+            <!-- Form for Updating Slider Names -->
+            {{-- <form method="POST" action="#">
+                @csrf
+                @method('PUT')
+                <div class="row gutters-tiny">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="sliderOneName">Slider One Name</label>
+                            <input type="text" class="form-control" id="sliderOneName" name="sliderOneName" value="{{ $sliderOneName ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="sliderTwoName">Slider Two Name</label>
+                            <input type="text" class="form-control" id="sliderTwoName" name="sliderTwoName" value="{{ $sliderTwoName ?? '' }}">
+                        </div>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-primary">Update Slider Names</button>
+            </form> --}}
+
+            <!-- Display Gallery Images -->
+            <div class="row gutters-tiny">
+                @foreach($gallery_images as $image)
+                <div class="col-md-6 col-lg-4 col-xl-3 animated fadeIn">
+                    <div class="options-container fx-item-zoom-in fx-overlay-slide-down">
+                        <img class="img-fluid options-item" src="{{ asset($image->primary_image) }}" style="width:287px;height:227px;" alt="">
+                        <div class="options-overlay bg-black-op-75">
+                            <div class="options-overlay-content">
+                                <a class="btn btn-sm btn-rounded btn-noborder btn-alt-success min-width-65" href="{{ route('admin.gallery.edit', $image->id) }}" data-toggle="tooltip" title="Edit Image"><i class="fa fa-pencil"></i></a>
+                                <a class="btn btn-sm btn-rounded btn-noborder btn-alt-danger min-width-65" href="javascript:;" onclick="if(confirm('Are you sure about deleting this Image?') == true) document.getElementById('delete-{{$image->id}}').submit();" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete Image"><i class="fa fa-trash text-danger"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="delete-{{$image->id}}" action="{{ route('admin.gallery.destroy', $image->id) }}" style="display:none" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
+                @endforeach
             </div>
         </div>
-        <form id="delete-{{$image->id}}" action="{{ route('admin.gallery.destroy',  $image->id) }}" style="display:none" method="POST">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-        </form>
-        @endforeach
-    </div>
+
     </div>
 @endsection
 @section('js')

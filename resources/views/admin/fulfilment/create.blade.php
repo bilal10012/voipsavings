@@ -48,14 +48,14 @@
                                     @endif
                                 </div>
                             </div>
-                       
-                            
+
+
                         </div>
                     </div>
-                
-                
-                   
-                
+
+
+
+
 
                     <div class="form-group row">
                                 <div class="col-md-12">
@@ -145,7 +145,7 @@
 <script src="{{asset('a-asset/js/plugins/select2.full.min.js')}}"></script>
 <script src="{{asset('a-asset/js/plugins/summernote-bs4.min.js')}}"></script>
 <script>
- 
+
     jQuery('.js-select2:not(.js-select2-enabled)').each((index, element) => {
         let el = jQuery(element);
         el.addClass('js-select2-enabled').select2({
@@ -169,7 +169,7 @@
         tags: true,
         tokenSeparators: [',']
     })
-   
+
     function itemType(e) {
         if(e.value == 'single') {
             $('.item-count').css('display', 'none');

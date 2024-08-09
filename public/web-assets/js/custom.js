@@ -33,15 +33,60 @@ $('.blogslid').slick({
   ]
 });
 
-// blogslider end
-$('.brand-slider').slick({
+// blogslider end\
+
+
+
+
+// artslider start
+$('.artslid').slick({
+  dots: false,
+  arrows:true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+
+// artslider end
+
+
+
+
+ // brand start
+ $('.brand-slider').slick({
     infinite: true,
     autoplay: true,
     arrows: false,
     autoplaySpeed: 0,
     cssEase: 'linear',
     speed: 9000,
-    slidesToShow: 8,
+    slidesToShow: 5,
     slidesToScroll: 1,
     responsive: [{
             breakpoint: 1199,
@@ -74,43 +119,10 @@ $('.brand-slider').slick({
     ]
 });
 
-// testi slider start
-$('.testi-slider').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    speed: 300,
-    arrows: false,
-    dots: false,
-    responsive: [{
-            breakpoint: 1100,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                infinite: true,
-                dots: false
-            }
-        },
-        {
-            breakpoint: 900,
-            settings: {
-                slidesToShow: 2,
-                autoplay: true,
-                slidesToScroll: 1
-            }
-        },
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 1,
-                autoplay: true,
-                slidesToScroll: 1,
-                dots: false
-            }
-        }
-    ]
-});
+// blogslider end
 
-// testi slider end
+
+
 
 // product slider jas start
 
@@ -183,4 +195,56 @@ function openCity(evt, cityName) {
 
 
 // slick slider in tabs js end
+
+// header script
+$(function() {
+  $(".navbar-set li > a").each(function() {
+      var href = $(this).attr('href');
+      var heading = $(this).text();
+      $('.sidenav').append('<a href="' + href + '">' + heading + '<\/a>');
+  });
+});
+
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.left = "0px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.left = "-250px";
+}
+// Header Script End
+
+
+
+
+// Counter js Start
+
+$(".count").each(function () {
+  $(this)
+    .prop("Counter", 0)
+    .animate(
+      {
+        Counter: $(this).text(),
+      },
+      {
+        duration: 4000,
+
+        easing: "swing",
+
+        step: function (now) {
+          $(this).text(Math.ceil(now));
+        },
+      }
+    );
+});
+
+
+
+// Counter Js End
+
+
+
+
 

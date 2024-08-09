@@ -6,8 +6,7 @@ use App\Gallery;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Session;
-
+use Illuminate\Support\Facades\Session;
 class GalleryController extends Controller
 {
     public function __construct()
@@ -23,30 +22,65 @@ class GalleryController extends Controller
         return view('admin.gallery.create');
     }
     public function store(Request $request) {
-        $slider =  new Gallery();
+        $slider = new Gallery();
+
+        // Handle image upload
         if ($request->hasFile('primaryImage')) {
             $file = $request->file('primaryImage');
             $image = upload($file, 1280, 426, 'gallery_images');
             $slider->primary_image = $image;
-        }else{
-            Session::flash('error','Please Select an Image');
+        } else {
+            Session::flash('error', 'Please Select an Image');
             return redirect()->back();
         }
+
+        // Save the title of the image if provided
+        if ($request->has('imageTitle')) {
+            $slider->title = $request->input('imageTitle');
+        }
+
+        // Save the state of the art section option
+        $slider->state_of_the_art = $request->input('stateOfTheArt') ? 1 : 0;
+
+        // Save the record to the database
         $slider->save();
-        Session::flash('success','New Image Has Been Added To The Gallery!');
+
+        // Flash success message and redirect
+        Session::flash('success', 'New Image Has Been Added To The Gallery!');
         return redirect()->route('admin.gallery.index');
     }
+
     public function edit($id)
     {
         $image = Gallery::findorFail($id);
         return view('admin.gallery.edit', compact('image'));
     }
     public function update(Request $request, Gallery $gallery)
-    {
-        $gallery->save();
-        Session::flash('success', 'Gallery Image Has Been Updated Successfully!');
-        return redirect()->route('admin.gallery.index');
+{
+    // Validate the request (add rules as needed)
+    $request->validate([
+        'imageTitle' => 'nullable|string|max:255',
+        'stateOfTheArt' => 'nullable|boolean',
+    ]);
+
+    // Update the title of the image if provided
+    if ($request->has('imageTitle')) {
+        $gallery->title = $request->input('imageTitle');
     }
+
+    // Update the state of the art section option
+    // Checkbox value is only sent if checked; otherwise, it will be null
+    $gallery->state_of_the_art = $request->has('stateOfTheArt') ? 1 : 0;
+
+    // Save the updated record to the database
+    $gallery->save();
+
+    // Flash success message and redirect
+    Session::flash('success', 'Gallery Image Has Been Updated Successfully!');
+    return redirect()->route('admin.gallery.index');
+}
+
+
     public function uploadGallery(Request $request,Gallery $gallery ,$id) {
         if ($request->hasFile('primary_image')) {
             $file = $request->file('primary_image');
@@ -65,4 +99,8 @@ class GalleryController extends Controller
         Session::flash('success', "Gallery Image Has Been deleted Successfully!");
         return redirect()->back();
     }
+
+
+
+
 }

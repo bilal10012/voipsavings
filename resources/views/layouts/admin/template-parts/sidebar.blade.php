@@ -13,7 +13,7 @@
                  <video autoplay muted loop src="{{ asset(getConfig('logo')) }}" style="width:100%;"></video>
                 @elseif($logo[1] == 'jpg' || $logo[1] == 'jpeg' || $logo[1] == 'png' || $logo[1] == 'gif')
                 <img src="{{asset(getConfig('logo'))}}" class="img-fluid" style="width:100%;">
-                @endif 
+                @endif
                     </a>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                         <li class="active">
                             <a class="{{(\Request::route()->getName() == 'admin.content')? 'active': ''}}" href="{{route('admin.content')}}">Pages Content</a>
                         </li>
-                    
+
                         <li class="active">
                             <a class="{{(\Request::route()->getName() == 'admin.banner')? 'active': ''}}" href="{{route('admin.banner')}}">Pages Banner</a>
                         </li>
@@ -68,7 +68,7 @@
                         </li>
                     </ul>
                 </li>
-              
+
                 <li>
                     <a href="{{route('admin.service.index')}}" class="{{(\Request::route()->getName() == 'admin.service.index' || \Request::route()->getName() == 'admin.service.edit' || \Request::route()->getName() == 'admin.service.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Services Management</span></a>
                 </li>
@@ -82,29 +82,34 @@
                     <a href="{{route('admin.pricing.index')}}" class="{{(\Request::route()->getName() == 'admin.pricing.index' || \Request::route()->getName() == 'admin.pricing.edit' || \Request::route()->getName() == 'admin.pricing.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">pricing Management</span></a>
                 </li>
                 <li>
-                    <a href="{{route('admin.city.index')}}" class="{{(\Request::route()->getName() == 'admin.city.index' || \Request::route()->getName() == 'admin.city.edit' || \Request::route()->getName() == 'admin.city.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Cities Management</span></a>
+                    <a href="{{route('admin.integration.index')}}" class="{{(\Request::route()->getName() == 'admin.integration.index' || \Request::route()->getName() == 'admin.integration.edit' || \Request::route()->getName() == 'admin.integration.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Cities Management</span></a>
                 </li>
-                     
+
+                <li>
+                    <a href="{{route('admin.faq.index')}}" class="{{(\Request::route()->getName() == 'admin.faq.index' || \Request::route()->getName() == 'admin.faq.edit' || \Request::route()->getName() == 'admin.faq.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">FAQ Management</span></a>
+                </li>
+
+
                 <li>
                     <a href="{{route('admin.supplier.index')}}" class="{{(\Request::route()->getName() == 'admin.supplier.index' || \Request::route()->getName() == 'admin.supplier.edit' || \Request::route()->getName() == 'admin.supplier.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Suppliers Management</span></a>
                 </li>
-           
+
                 <li>
                     <a href="{{route('admin.our-work.index')}}" class="{{(\Request::route()->getName() == 'admin.our-work.index' || \Request::route()->getName() == 'admin.our-work.edit' || \Request::route()->getName() == 'admin.our-work.create')? 'active': ''}}"><i class="si si-list" data-toggle="tooltip" title="si-list"></i><span class="sidebar-mini-hide">Our Work Management</span></a>
                 </li>
                 <li>
-                    <a href="{{route('admin.gallery.index')}}" class="{{(\Request::route()->getName() == 'admin.gallery.index' || \Request::route()->getName() == 'admin.gallery.edit' || \Request::route()->getName() == 'admin.gallery.create')? 'active': ''}}"><i class="si si-list" data-toggle="tooltip" title="si-list"></i><span class="sidebar-mini-hide">gallery Management</span></a>
+                    <a href="{{route('admin.gallery.index')}}" class="{{(\Request::route()->getName() == 'admin.gallery.index' || \Request::route()->getName() == 'admin.gallery.edit' || \Request::route()->getName() == 'admin.gallery.create')? 'active': ''}}"><i class="si si-list" data-toggle="tooltip" title="si-list"></i><span class="sidebar-mini-hide">Slider Management</span></a>
                 </li>
- 
 
-         
-              
+
+
+
 
                 <!-- <li>
                     <a href="{{route('admin.user.index')}}" class="{{(\Request::route()->getName() == 'admin.user.index' || \Request::route()->getName() == 'admin.user.edit' || \Request::route()->getName() == 'admin.user.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Users Management</span></a>
                 </li> -->
-             
-               
+
+
                 @else
                 <!-- <li>
                     <a href="{{route('user.vehicle.index')}}" class="{{(\Request::route()->getName() == 'user.vehicle.index' || \Request::route()->getName() == 'user.vehicle.edit' || \Request::route()->getName() == 'user.vehicle.create')? 'active': ''}}"><i class="si si-speech"></i><span class="sidebar-mini-hide">Vehicles Management</span></a>
@@ -116,7 +121,7 @@
                     <a href="{{route('user.showproductinquiry')}}" class="{{(\Request::route()->getName() == 'user.showproductinquiry')? 'active': ''}}"><i class="si si-phone"></i><span class="sidebar-mini-hide">Product Inquiries</span></a>
                 </li> -->
                 @endif
-               
+
                 <li>
                     <a href="{{route('admin.profile')}}" class="{{(\Request::route()->getName() == 'admin.profile')? 'active': ''}}"><i class="si si-user"></i><span class="sidebar-mini-hide">Profile</span></a>
                 </li>

@@ -26,25 +26,36 @@
         <h2 class="content-heading">Adding new Image To the Gallery <a href="{{route('admin.gallery.index')}}" class="btn btn-alt-primary pull-right">Back</a></h2>
         <div class="block">
             <div class="block-content">
-                <form method="POST" action="{{route('admin.gallery.store')}}" id="createPost" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.gallery.store') }}" id="createPost" enctype="multipart/form-data">
+                    @csrf
                     <div class="row">
-                        @csrf
                         <div class="col-md-6 offset-3">
-                            <!-- <label class="mt-20">Blog Team Member Image</label> -->
-                            <div class="block col-md-12">
-                                <input type="file" class="custom-file-input" id="example-file-input-custom" name="primaryImage" data-toggle="custom-file-input">
-                                <label class="custom-file-label" for="example-file-input-custom">Choose Image</label>
+                            <!-- Title of the Image (Optional) -->
+                            <div class="form-group">
+                                <label for="imageTitle">Title of the Image (Optional)</label>
+                                <input type="text" class="form-control" id="imageTitle" name="imageTitle" placeholder="Enter image title">
                             </div>
-                            <!-- <label class="mt-20">Blog Post Secondary Image</label>
-                            <div class="block col-md-12">
-                                <input type="file" class="custom-file-input" id="example-file-input-custom" name="secondaryImage" data-toggle="custom-file-input">
-                                <label class="custom-file-label" for="example-file-input-custom">Choose Blog Post Secondary Image</label>
-                            </div> -->
+
+                            <!-- Image Upload -->
+                            <div class="form-group">
+                                <label for="primaryImage">Choose Image</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="primaryImage" name="primaryImage" data-toggle="custom-file-input">
+                                    <label class="custom-file-label" for="primaryImage">Choose Image</label>
+                                </div>
+                            </div>
+
+                            <!-- Checkbox to Display on State of the Art Section -->
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="stateOfTheArt" name="stateOfTheArt">
+                                <label class="form-check-label" for="stateOfTheArt">Display on State of the Art Section?</label>
+                            </div>
                         </div>
                     </div>
-                    @csrf
+
                     <input type="submit" id="publishFaq" class="btn btn-primary m-30" value="Add Image">
                 </form>
+
             </div>
         </div>
     </div>

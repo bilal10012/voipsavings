@@ -26,6 +26,7 @@
 @section('content')
     <div class="content">
         <h2 class="content-heading">Adding new Service <a href="{{route('admin.service.index')}}" class="btn btn-alt-primary pull-right">Back</a></h2>
+        
         <form method="post" action="{{route('admin.service.store')}}" enctype="multipart/form-data">
             <div class="row gutters-tiny">
                 <div class="col-md-10">
@@ -119,6 +120,17 @@
                                     </div>
                                 </div>
                             @endif
+                                <div>
+                                    <select name="dropdown" id="dropdown">
+                                        <option value="">Select an option</option>
+                                        <option value="option1">Option 1</option>
+                                        <option value="option2">Option 2</option>
+                                        <option value="option3">Option 3</option>
+                                        <option value="option4">Option 4</option>
+                                    </select>
+                                    
+                                </div>
+
                             <div class="row gutters-tiny items-push">
                                 <div class="col-sm-12 col-xl-12 mb-0">
                                     <div class="block text-center">

@@ -25,6 +25,7 @@ Route::any('/about', 'web\HomeController@about')->name('about');
 Route::any('/gallery', 'web\HomeController@Gallery')->name('gallery');
 Route::any('/service', 'web\HomeController@Service')->name('service');
 Route::any('/pricing', 'web\HomeController@pricing')->name('pricing');
+Route::any('/customer', 'web\HomeController@customer')->name('customer');
 // Route::any('/service', 'web\HomeController@fulfilment')->name('fulfilment');
 Route::get('/account/login', 'web\HomeController@accountLoginPage')->name('accountLoginPage');
 Route::post('newsletter', 'web\HomeController@newsletter')->name('newsletter');
@@ -90,7 +91,13 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::resource('user', 'Admin\UserController');
         Route::resource('supplier', 'Admin\SupplierController');
         Route::resource('service', 'Admin\ServiceController');
-        Route::resource('city', 'Admin\CityController');
+        Route::resource('integration', 'Admin\IntegrationController');
+        Route::resource('faq', 'Admin\FaqController');
+        Route::resource('slider', 'Admin\SliderController');
+        Route::resource('detail', 'Admin\DetailController');
+
+        // Route::post('admin/faq/{id}','Admin\FaqController')->name('admin.faq.update');
+
         Route::resource('fulfilment', 'Admin\FulfilmentController');
         Route::resource('testimonial', 'Admin\TestimonialController');
         Route::resource('pricing', 'Admin\PricingController');

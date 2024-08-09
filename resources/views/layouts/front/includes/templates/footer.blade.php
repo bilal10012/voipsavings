@@ -6,48 +6,48 @@
                 <div class="footer-contact-info wow fadeInUp" data-wow-duration="2s">
                   <h2>Contact Info</h2>
                   <ul class="contact-phone">
-                    <li><a href="javascript::"><i class="fas fa-map-marker-alt"></i>{{getConfig('address')}}</a></li>
-                    <li><a href="Tel:{{getConfig('contact')}}"> <i class="fas fa-phone-alt"></i> {{getConfig('contact')}}</a></li>
+                    <li><a href="javascript::"><i class="fas fa-map-marker-alt"></i>{{ getConfig('address') }}</a></li>
+                    <li><a href="Tel:{{ getConfig('contact') }}"> <i class="fas fa-phone-alt"></i> {{ getConfig('contact') }}</a></li>
                   </ul>
                   <h3>Toll Free</h3>
-                  <a href="Tel:{{getConfig('toll')}}">{{getConfig('toll')}}</a>
+                  <a href="Tel:{{ getConfig('toll') }}">{{ getConfig('toll') }}</a>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-12">
                <div class="ftr-number wow fadeInDown" data-wow-duration="2s">
                  <div class="olympia">
                  <h2>Olympia</h2>
-                 <a href="Tel:{{getConfig('olympia')}}">{{getConfig('olympia')}}</a>
+                 <a href="Tel:{{ getConfig('olympia') }}">{{ getConfig('olympia') }}</a>
                </div>
                 <div class="olympia">
                  <h2>Centralia</h2>
-                 <a href="Tel:{{getConfig('centralia')}}">{{getConfig('centralia')}}</a>
+                 <a href="Tel:{{ getConfig('centralia') }}">{{ getConfig('centralia') }}</a>
                </div>
                 <div class="olympia">
                  <h2>Yelm   </h2>
-                 <a href="Tel:{{getConfig('yelm')}}">{{getConfig('yelm')}}</a>
+                 <a href="Tel:{{ getConfig('yelm') }}">{{ getConfig('yelm') }}</a>
                </div>
                </div>
               </div>
                  <div class="col-lg-4 col-md-4 col-12">
                <div class="ftr-newsletter wow fadeInUp" data-wow-duration="2s">
                  <h2>NewsLetter</h2>
-                 <p>{{getConfig('news_text')}}</p>
+                 <p>{{ getConfig('news_text') }}</p>
                  <form id="newsletter_form">
-                 @csrf  
+                 @csrf
                    <input type="email"name="newsletter_email" placeholder="Your Email">
                    <div class="newsletter-btn">
                      <button type="submit"><i class="fas fa-paper-plane"></i></button>
                    </div>
                  </form>
-               
+
                </div>
               </div>
             </div>
             <div class="footer-copy-right  wow fadeInRight" data-wow-duration="2s">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-12">
-                  <p>{{getConfig('copy_right') }}</p>
+                  <p>{{ getConfig('copy_right') }}</p>
                 </div>
               </div>
             </div>
@@ -55,7 +55,7 @@
         </div>
       </footer> -->
 
-      <footer class="footer-sec position-relative">
+    {{-- <footer class="footer-sec position-relative">
           <div class="container">
             <div class="row">
               <div class="col-lg-3 col-md-4">
@@ -128,6 +128,68 @@
               </div>
             </div>
           </div>
-        </footer>
+        </footer> --}}
 
-        @include('layouts.front.includes.scripts')
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-12">
+                    <div class="top-heading-footer wow fadeInDown" data-wow-duration="2s">
+                        <h3>Interested In Learning More?</h3>
+                        <h2>Connect With Us</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-12">
+                    <div class="ft-logo wow fadeInLeft" data-wow-duration="2s">
+                        <a href="{{ route('webIndexPage') }}"><img src="{{ asset('web-assets/images/logo.png') }}"
+                                alt="img"></a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-12">
+                    <div class="ft-contact-info wow fadeInDown" data-wow-duration="2s ">
+                        <h5>Contact</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i>STREET 12345@ CALICORNIA , CA</li>
+                            <li><i class="fas fa-phone-alt"></i><a href="tel:(021) - 12345- 54862">(021) - 12345-
+                                    54862</a></li>
+                            <li><i class="fas fa-envelope"></i><a
+                                    href="mailto:LOREMIPUSM@GMAIL.COM">LOREMIPUSM@GMAIL.COM</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-12">
+                    <div class="maindv-subscriber wow fadeInRight" data-wow-duration="2s">
+                        <div class="ft-subscribe">
+                            <h5>Subscribe Now</h5>
+                            <div class="ft-field">
+                                <input type="email" name="" placeholder="Email Address"><a href="#"><i
+                                        class="far fa-paper-plane"></i></a>
+                            </div>
+                        </div>
+                        <div class="ft-icon ">
+                            <h4>Follow on</h4>
+                            <ul>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-12 col-12">
+                    <div class="ft-bottom-text wow fadeInDown" data-wow-duration="2s">
+                        <p>Copyright © VoIP Savings Plus 2024 All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @include('layouts.front.includes.scripts')

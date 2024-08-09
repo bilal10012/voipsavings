@@ -23,60 +23,55 @@ class SliderController extends Controller
         return view('admin.slider.create');
     }
     public function store(Request $request) {
-        
         $validator = Validator::make($request->all(), [ 
-            
             'heading' => 'required|string|max:255',
             'button_text' => 'required|string|max:255',
             'button_link' => 'required|string|max:255|url',
-            'featured_image' => 'required|mimes:jpeg,jpg,png|required|max:500000',
-            'background_image' => 'required|mimes:jpeg,jpg,png|required|max:500000',
-
+            'featured_image' => 'required|mimes:jpeg,jpg,png|max:500000',
+            'background_image' => 'required|mimes:jpeg,jpg,png|max:500000',
             'description' => 'required',
-        ],
-        [
-            
+        ], [
             'heading.required' => 'Please provide heading text',
             'heading.max' => 'Name can not exceed :max characters',
             'button_text.required' => 'Please provide button text',
             'button_text.max' => 'Button can not exceed :max characters',
             'button_link.required' => 'Please provide button Link',
-
-            'button_text_1.required' => 'Please provide Second button text',
-            'button_text_1.max' => 'Second Button can not exceed :max characters',
-            'button_link_1.required' => 'Please provide Second button Link',
-            
             'background_image.required' => 'Please provide slider Background Image',
-
-            'primary_image.required' => 'Please provide slider Image',
+            'featured_image.required' => 'Please provide slider Image',
         ]);
-        if ($validator->fails()){
+    
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        $slider =  new Slider();
+    
+        $slider = new Slider();
         $slider->heading = $request->input('heading');
         $slider->description = $request->input('description');
         $slider->button_text = $request->input('button_text');
-        $slider->button_link = ($request->input('button_link')) ? $request->input('button_link') : null;
-
-        $slider->button_text_1 = $request->input('button_text_1');
-        $slider->button_link_1 = ($request->input('button_link_1')) ? $request->input('button_link_1') : null;
-
-        $slider->is_active = ($request->is_active == 'checked') ? 1 : 0;
+        $slider->button_link = $request->input('button_link');
+    
+        $slider->button_text_1 = $request->input('button_text_1', null);
+        $slider->button_link_1 = $request->input('button_link_1', null);
+        $slider->is_active = $request->has('is_active') ? 1 : 0;
+    
         if ($request->hasFile('featured_image')) {
             $file = $request->file('featured_image');
             $image = upload($file, 1500, 800, 'slider');
             $slider->primary_image = $image;
         }
+    
         if ($request->hasFile('background_image')) {
             $file = $request->file('background_image');
             $image = upload($file, 1500, 800, 'slider-background');
             $slider->background_image = $image;
         }
+    
         $slider->save();
-        Session::flash('success',"New Slider Info has Been Added Successfully!");
+    
+        Session::flash('success', "New Slider Info has Been Added Successfully!");
         return redirect()->route('admin.slider.index');
     }
+    
     public function edit($id)
     {
         $slider = Slider::findorFail($id);

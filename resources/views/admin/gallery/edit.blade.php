@@ -22,28 +22,48 @@
 @endsection
 @section('content')
 <div class="content">
-    <h2 class="content-heading">{{$image->id}} - Image</h2>
+    <h2 class="content-heading">{{ $image->id }} - Image</h2>
     <div class="block">
         <div class="row">
+            <!-- Image Upload Section -->
             <div class="col-md-6">
                 <div class="block">
                     <div class="block-content block-content-full">
                         <label>Gallery Image</label>
-                        <form class="dropzone" id="primaryImage" action="{{route('admin.gallery.upload', $image->id)}}" method="POST">@csrf</form>
+                        <form class="dropzone" id="primaryImage" action="{{ route('admin.gallery.upload', $image->id) }}" method="POST">
+                            @csrf
+                        </form>
                         <small>To update this image, click inside the zone or drop the new image inside the zone.</small>
                     </div>
                 </div>
             </div>
+
+            <!-- Image Details Section -->
             <div class="col-md-6">
-                <form method="POST" class="p-20" action="{{route('admin.gallery.update', $image->id)}}">
+                <form method="POST" class="p-20" action="{{ route('admin.gallery.update', $image->id) }}">
                     @csrf
                     @method('PUT')
+
+                    <!-- Title of the Image (Optional) -->
+                    <div class="form-group">
+                        <label for="imageTitle">Title of the Image (Optional)</label>
+                        <input type="text" class="form-control" id="imageTitle" name="imageTitle" value="{{ $image->title }}" placeholder="Enter image title">
+                    </div>
+
+                    <!-- Checkbox to Display on State of the Art Section -->
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="stateOfTheArt" name="stateOfTheArt" {{ $image->state_of_the_art ? 'checked' : '' }}>
+                        <label class="form-check-label" for="stateOfTheArt">Display on State of the Art Section?</label>
+                    </div>
+
+
                     <input type="submit" value="Update Information" class="btn btn-primary mt-20">
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 @endsection
 @section('js')
     <script src="{{asset('a-asset/js/plugins/dropzone.min.js')}}"></script>

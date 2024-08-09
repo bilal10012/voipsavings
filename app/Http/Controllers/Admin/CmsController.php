@@ -33,7 +33,7 @@ class CmsController extends Controller
             'content.*.title.max' => 'title can not have more than :max characters.',
             'content.*.subtitle.max' => 'Subtitle can not have more than :max characters.',
         ]);
-    
+
         // Check if validation fails
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -65,13 +65,13 @@ class CmsController extends Controller
     public function updateLogo(Request $request) {
         if ($request->hasFile('logo')) {
             $this->validate($request, [
-             
+
                   'logo' => ['required', 'mimes:jpeg,png,jpg,gif'],
-                  
+
               ], [
                   'logo.required' => 'Please provide display image',
                   'logo.mimes' => 'Display image should be in :mimes format',
-           
+
               ]);
             $file = $request->file('logo');
             $extention = $file->getClientOriginalExtension();
@@ -88,13 +88,13 @@ class CmsController extends Controller
 
         if ($request->hasFile('favicon')) {
             $this->validate($request, [
-             
+
                 'favicon' => ['required', 'mimes:jpeg,png,jpg,gif'],
-                
+
             ], [
                 'favicon.required' => 'Please provide display image',
                 'favicon.mimes' => 'Display image should be in :mimes format',
-         
+
             ]);
             $file = $request->file('favicon');
             $image = upload($file, 164, 49);
@@ -117,7 +117,7 @@ class CmsController extends Controller
             $extention = $file->getClientOriginalExtension();
             $image = 'storage/images/'. time().'1.'.$extention;
             $file->move(public_path('storage/images/'),$image);
-            
+
             $config = Config::where('key', 'logo')->first();
             $config->value = $image;
             $config->save();

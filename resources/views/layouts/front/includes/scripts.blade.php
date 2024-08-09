@@ -7,21 +7,21 @@
 <script src="{{asset('web-assets/js/fancybox.js')}}"></script>
 <script src="{{asset('web-assets/js/bootstrap.js')}}"></script> -->
 
-    <script src="{{asset('web-assets/js/jquery-3.6.0.min.js')}}"></script>
-    <script src="{{asset('web-assets/js/wow.js')}}"></script>
-    <script src="{{asset('web-assets/slick/slick.js')}}"></script>
-    <script src="{{asset('web-assets/slick/slick.min.js')}}"></script>
-    <script src="{{asset('web-assets/js/jquery.slicknav.js')}}"></script>
-    <script src="{{asset('web-assets/js/fancybox.js')}}"></script>
-    <script src="{{asset('web-assets/js/bootstrap.js')}}"></script>
-    <script src="{{asset('web-assets/js/custom.js')}}"></script>
+<script src="{{asset('web-assets/js/jquery-3.6.0.min.js')}}"></script>
+<script src="{{asset('web-assets/js/wow.js')}}"></script>
+<script src="{{asset('web-assets/slick/slick.js')}}"></script>
+<script src="{{asset('web-assets/slick/slick.min.js')}}"></script>
+<script src="{{asset('web-assets/js/jquery.slicknav.js')}}"></script>
+<script src="{{asset('web-assets/js/fancybox.js')}}"></script>
+<script src="{{asset('web-assets/js/bootstrap.js')}}"></script>
+<script src="{{asset('web-assets/js/custom.js')}}"></script>
       <script>
-      $(function(){ 
+      $(function(){
         $(".flipster").flipster({
           style: 'carousel'
           });
           });
-        
+
         </script>
       <script src="{{asset('web-assets/js/custom.js')}}"></script>
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
@@ -37,24 +37,24 @@
              }
            });
          });
-               
+
       </script>
 
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
- 
+
 
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
- 
-    
 
 
- 
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
 
@@ -184,7 +184,7 @@
               },
           });
       });
-    
+
   });
 </script>
 <!-- <script type="text/javascript">

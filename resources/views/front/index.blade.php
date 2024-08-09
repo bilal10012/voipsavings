@@ -1,473 +1,392 @@
 @extends('layouts.front.app')
-@section('title','Home')
+@section('title', 'Home')
 @section('css')
 @endsection
 @section('content')
-   <section class="main_slider">
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-         @foreach($banner as $key=> $ban )
-          <div class="carousel-item {{($key == 0)?'active':''}}">
-            <img src="{{asset($ban->image)}}" class="img-fluid" alt="...">
-            <div class="carousel-caption">
+        <!-- banner start -->
+        <section class="main_slider">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+              <!-- <div class="carousel-indicators">
+                <div data-bs-target="#carouselExampleControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></div>
+                <div data-bs-target="#carouselExampleControls" data-bs-slide-to="1" aria-label="Slide 2"></div>
+                <div data-bs-target="#carouselExampleControls" data-bs-slide-to="2" aria-label="Slide 3"></div>
+              </div> -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    {{-- <div class="carousel-item {{ $key == 0 ? 'active' : '' }}"> --}}
+                        <img src="{{ asset($banner->image) }}" class="img-fluid" alt="...">
+                   <div class="carousel-caption">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
+                            <h1>{{ $banner->title }}</h1>
+                            <p>{!! $banner->text !!}</p>
+                           <a href="{{ $banner->button_link }}" class="theme-btn">{{ $banner->button_name }}</a>
+
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_img">
+                            <img src="{{ $banner->image_2 }}" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="carousel-item">
+                  <img src="images/banner.jpg" class="img-fluid" alt="...">
+                   <div class="carousel-caption">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
+                            <h1>CrossFire</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas. umsan lacus vel facilisis. </p>
+                            <a href="javascript:void(0)" class="btn btn_badam">Read More</a>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_img wow bounceIn" data-wow-duration="2s">
+                            <img src="images/banner_img.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <img src="images/banner.jpg" class="img-fluid" alt="...">
+                   <div class="carousel-caption">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
+                            <h1>CrossFire</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas. umsan lacus vel facilisis. </p>
+                            <a href="javascript:void(0)" class="btn btn_badam">Read More</a>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
+                          <div class="banner_img wow bounceIn" data-wow-duration="2s">
+                            <img src="images/banner_img.png" class="img-fluid" alt="">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+              <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button> -->
+            </div>
+          </section>
+          <!-- banner end -->
+
+
+
+          <!--Section  Counter Start -->
+          <section>
+            <div class="counter-sec">
               <div class="container">
                 <div class="row">
-                  <div class="col-xs-12 col-sm-6 col-md-6 align-self-center">
-                    <div class="banner_text wow fadeInLeft" data-wow-duration="2s">
-                      <h1>{{$ban->title}}
-                      </h1>
-                      <p>{{$ban->text}}</p>
-                      <ul>
-                        <li>
-                          <div class="ankar">
-                            <a href="javascript::void(0)">Contact</a>
+                  <div class="maindv-counter">
+                    <div class="counter-box wow fadeInLeftBig" data-wow-duration="3s">
+                     <div class="counter"><span class="count">{{ $exp->subtitle }}</span>+</div>
+                     <h4>{{ $exp->title }}</h4>
+                      </div>
+                      <div class="counter-box wow fadeInLeftBig" data-wow-duration="2s">
+                     <div class="counter">$<span class="count">{{ $revenue->subtitle }}</span>M</div>
+                     <h4>{{ $revenue->title }}</h4>
+                      </div>
+                      <div class="counter-box wow fadeInLeftBig" data-wow-duration="1s">
+                     <div class="counter"><span class="count">{{ $employees->subtitle }}</span>+</div>
+                     <h4>{{ $employees->title }}</h4>
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- Section Counter end -->
+
+
+          <!-- Section About Us Start -->
+          <section>
+            <div class="aboutus">
+              <div class="container-fluid">
+                <div class="row">
+                  <div  class="col-md-5 col-lg-5 col-12">
+                    <div class="aboutus-img wow fadeInLeftBig" data-wow-duration="2s">
+                      <img src="{{ $about->primary_image }}" alt="img">
+                    </div>
+                  </div>
+                  <div  class="col-md-7 col-lg-7 col-12">
+                    <div class="text-aboutus wow fadeInRightBig" data-wow-duration="2s">
+                      <h3>{{ $about->title }}</h3>
+                      <p>{!! $about->description !!}</p>
+                      <div class="btn-aboutus">
+                        <a href="{{ $about->link }}" class="theme-btn">{{ $about->button_text }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- Section About Us End -->
+
+
+
+          <!-- Section Different Start -->
+          <section>
+            <div class="different">
+              <div class="container">
+                <div class="row">
+                  <div class="heading-different wow fadeInDownBig" data-wow-duration="2s">
+                    <h2>{{ $distic_offer->title }}</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-lg-4 col-12">
+                    <div class="maindv-box-diiferent wow fadeInLeftBig" data-wow-duration="3s">
+                      <div class="img-different">
+                        <img src="{{ $distic_offer->primary_image }}" alt="img">
+                      </div>
+                      <div class="text-different">
+                        <h2>{{ $distic_offer->subtitle }}</h2>
+                        <ul>
+                          {!! $distic_offer->description !!}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-lg-4 col-12">
+                    <div class="maindv-box-diiferent wow fadeInLeftBig" data-wow-duration="2s">
+                      <div class="img-different">
+                        <img src="{{ $simplified_tech->primary_image }}" alt="img">
+                      </div>
+                      <div class="text-different">
+                        <h2>{{ $simplified_tech->subtitle }}</h2>
+                        <ul>
+                          {!! $simplified_tech->description !!}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-lg-4 col-12">
+                    <div class="maindv-box-diiferent wow fadeInLeftBig" data-wow-duration="1s">
+                      <div class="img-different">
+                        <img src="{{ $unlimited_exp->primary_image }}" alt="img">
+                      </div>
+                      <div class="text-different">
+                        <h2>{{ $unlimited_exp->subtitle }}</h2>
+                        <ul>
+                          {!! $unlimited_exp->description !!}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+
+          <!-- Section Different End -->
+
+
+
+          <!-- Section featured Start -->
+          <section>
+            <div class="featured">
+             <div class="container">
+              <div class="row">
+                  <div class="heading-different">
+                    <h2>Featured In</h2>
+                  </div>
+                </div>
+               <div class="row">
+                 <div class="col-12">
+                          <div class="brand-slider">
+                            @foreach($slider_1 as $slider)
+                              <div>
+                                  <div class="brand-text">
+                                      <h5>
+                                          <img src="{{ $slider->primary_image }}" alt="" class="brand-1" />
+                                      </h5>
+                                  </div>
+                              </div>
+                              @endforeach
+
                           </div>
-                        </li>
-                        <li>
-                          <a href="javascript::void(0)">Services</a>
-                        </li>
+               </div>
+             </div>
+            </div>
+          </div>
+          </section>
+
+
+
+
+          <!-- Section featured End -->
+
+
+          <!-- Section Spectrum Start -->
+          <section>
+            <div class="spectrum">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12 col-lg-12 col-12">
+                    <div class="heading-spectrum wow fadeInDown" data-wow-duration="2s">
+                      <h2>{{ $why_section->title }}</h2>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7 col-lg-7 col-12">
+                    <div class="text-spectrum wow fadeInLeft" data-wow-duration="2s">
+                      <ul>
+                        {!! $why_section->description !!}
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-lg-5 col-12">
+                    <div class="img-spectrum wow fadeInRight" data-wow-duration="2s">
+                      <img src="{{asset ($why_section->primary_image) }}" alt="img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- Section Spectrum End -->
+
+
+
+          <!-- Section portal Start -->
+          <section>
+            <div class="portal">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-7 col-lg-7 col-12">
+                    <div class="img-portal wow fadeInLeftBig" data-wow-duration="2s">
+                      <img src="{{ $stratus_portal->primary_image }}" alt="img">
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-lg-5 col-12">
+                    <div class="text-portal wow fadeInRightBig" data-wow-duration="2s">
+                      <h2>{{ $stratus_portal->title }}</h2>
+                      <ul>
+                        {!! $stratus_portal->description !!}
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          @endforeach
+          </section>
 
-        </div>
-      </div>
-    </section>
-    <!-- banner end -->
-    <!-- fulfil start -->
-    <section class="fulfil">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-12 col-12">
-            <div class="fulfil-txt wow fadeInLeft" data-wow-duration="2s">
-              <h2>{{$section1->title}}</h2>
-            </div>
-          </div>
 
-          {!! $section1->description !!}
-          <!-- <div class="col-md-6 col-lg-6 col-12 wow fadeInLeftBig" data-wow-duration="2s">
-             <ul class="fulfil on">
-               <li><img src="images/fulfil-sm-1.png" alt=""></li>
-               <li><p>Shipping with costs 70% less per unit than comparable premium options offered by other US fulfillment services.</p></li>
-             </ul>
-             <ul class="fulfil">
-               <li><img src="images/fulfil-sm-3.png" alt=""></li>
-               <li><p>Our network includes hundreds of fulfillment centers worldwide and can help you reach customers around the globe.</p></li>
-             </ul>
-          </div>
-           <div class="col-md-6 col-lg-6 col-12 wow fadeInRightBig" data-wow-duration="2s">
-             <ul class="fulfil on">
-               <li><img src="images/fulfil-sm-2.png" alt=""></li>
-               <li><p>To deliver orders with the speed and reliability customers love. That can help you increase sales and repeat purchases.</p></li>
-             </ul>
-             <ul class="fulfil">
-               <li><img src="images/fulfil-sm-4.png" alt=""></li>
-               <li><p>Instead of spending time processing orders, handling customer inquiries, and managing returns,  to focus on developing products and delighting customers.</p></li>
-             </ul>
-          </div> -->
-        </div>
-      </div>
-    </section>
-    <!-- fulfil end -->
-    <!-- brand start -->
-    <section class="brand">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-12">
-            <div class="brand-txt wow fadeInDownBig" data-wow-duration="2s">
-              <h3>Marketplace + <span>Carrier Integrations</span></h3>
-            </div>
-          </div>
-           <div class="col-12">
-           <div class="brand-slider">
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-8.png" alt="" class="brand-1" />
-                
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-1.png" alt="" class="brand-1" />
-                 
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-2.png" alt="" class="brand-1" />
-                 
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-3.png" alt="" class="brand-1" />
-                 
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                
-                   <img src="images/brand-4.png" alt="" class="brand-1" />
-                
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-5.png" alt="" class="brand-1" />
-                
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-6.png" alt="" class="brand-1" />
-                
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-7.png" alt="" class="brand-1" />
-                 
-               </div>
-             </div>
-             <div>
-               <div class="brand-text">
-                 
-                   <img src="images/brand-8.png" alt="" class="brand-1" />
-                 
-               </div>
-             </div>
-           </div>
-         </div>
-        </div>
-      </div>
-    </section>
-    <!-- brand end -->
-    <!-- ship start -->
-    <section class="ship"> 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7 col-lg-7 col-12">
-            <div class="ship-txt wow fadeInLeftBig" data-wow-duration="2s">
-              <h3>Ship Worldwide <span>3-Day, 2-Day, Next-Day</span></h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-                         <div class="ankar">
-                            <a href="#">Explore Us</a>
-                          </div>
-            </div>
-          </div>
-          <div class="col-lg-5 col-md-5 col-12">
-            <div class="ship-img wow fadeInRightBig" data-wow-duration="2s">
-              <img src="images/ship.png" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-     <!-- ship end -->
-     <!-- experience start -->
-     <section class="experience wow bounceIn">
-       <div class="container">
-         <div class="row">
-           <div class="col-md-4 col-lg-4 col-12">
-             <div class="exp-txt">
-               <h3>260K</h3>
-               <p>Business Grow</p>
-             </div>
-           </div>
-           <div class="col-md-4 col-lg-4 col-12">
-             <div class="exp-txt">
-               <h3>20</h3>
-               <p>Years Experience</p>
-             </div>
-           </div>
-           <div class="col-md-4 col-lg-4 col-12">
-             <div class="exp-txt">
-               <h3>100+</h3>
-               <p>Shippment Parcel</p>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- experience end -->
-     <!-- what-we start -->
-     <section class="what-we">
-       <div class="container">
-         <div class="row">
-           <div class="col-md-12 col-lg-12 col-12">
-             <div class="what-we-txt wow fadeInUpBig" data-wow-duration="2s">
-               <h3>What We Serve</h3>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="what-we-img wow fadeInLeft">
-               <a href="service-det.html"><img src="images/what-we-1.jpg" alt=""></a>
-               <div class="what-we-img-sm">
-                 <img src="images/what-we-sm.png" alt="">
-               </div> 
-             </div>
-             <div class="what-we-bx-txt">
-               <h5>NVOCC</h5>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="what-we-img wow fadeInRight">
-              <a href="service-det.html"><img src="images/what-we-2.jpg" alt=""></a>
-               <div class="what-we-img-sm">
-                 <img src="images/what-we-sm.png" alt="">
-               </div> 
-             </div>
-             <div class="what-we-bx-txt">
-               <h5>CUSTOM<span>CLEARANCE</span></h5>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="what-we-img wow fadeInLeft">
-               <a href="service-det.html"><img src="images/what-we-3.jpg" alt=""></a>
-               <div class="what-we-img-sm">
-                 <img src="images/what-we-sm.png" alt="">
-               </div> 
-             </div>
-             <div class="what-we-bx-txt">
-               <h5>FCL/LCL<span>CARGO</span></h5>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="what-we-img wow fadeInRight">
-               <a href="service-det.html"><img src="images/what-we-4.jpg" alt=""></a>
-               <div class="what-we-img-sm">
-                 <img src="images/what-we-sm.png" alt="">
-               </div> 
-             </div>
-             <div class="what-we-bx-txt">
-               <h5>TRANSPORTATION</h5>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- what-we end -->
-     <!-- faq start -->
-     <section class="faqs">
-       <div class="container">
-         <div class="row"> 
-           <div class="col-md-4 col-lg-4 col-12">
-             <div class="faq-txt wow fadeInLeftBig" data-wow-duration="2s">
-               <h3>Faqs</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis n</p>
-             </div>
-           </div>
-           <div class="col-md-8 col-lg-8 col-12">
-             <div class="accordion accordion-flush wow fadeInRightBig" data-wow-duration="2s" id="accordionFlushExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingOne">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-       how can i pay my appointment
-      </button>
-    </h2>
-    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in .</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-        what are your opening hours?
-      </button>
-    </h2>
-    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        waht is your cancellation policy?
-      </button>
-    </h2>
-    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in .</div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="flush-headingFour">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
-        what are the parking and public transport options?
-      </button>
-    </h2>
-    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in .</div>
-    </div>
-  </div>
-</div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- faq end -->
-     <!-- dilivery start -->
-     <section class="dilivery">
-       <div class="container">
-         <div class="row align-items-center">
-           <div class="col-md-6 col-lg-6 col-12">
-             <div class="dilivery-txt wow fadeInDownBig" data-wow-duration="2s">
-               <h3>Effortless Delivery <span>With Our Logistic</span>Solutions</h3>
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-               <div class="ankar">
-                  <a href="#">Explore Us</a>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- dilivery end -->
-     <!-- true start -->
-     <section class="true">
-       <div class="container">
-         <div class="row">
-           <div class="col-md-12 col-lg-12 col-12">
-             <div class="true-txt wow fadeInLeftBig">
-               <h2>True fulfillment</h2>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="true-mian-bx wow fadeInLeft">
-               <div class="true-img">
-                 <img src="images/true-1.png" alt="">
-               </div>
-               <div class="true-bx-txt">
-                 <h5>IMPORT</h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
-               </div>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="true-mian-bx wow fadeInRight">
-               <div class="true-img">
-                 <img src="images/true-2.png" alt="">
-               </div>
-               <div class="true-bx-txt">
-                 <h5>EXPORT</h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
-               </div>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="true-mian-bx wow fadeInLeft">
-               <div class="true-img">
-                 <img src="images/true-3.png" alt="">
-               </div>
-               <div class="true-bx-txt">
-                 <h5>CUSTOM<span>CLEARANCE</span></h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
-               </div>
-             </div>
-           </div>
-           <div class="col-md-3 col-lg-3 col-12">
-             <div class="true-mian-bx wow fadeInRight">
-               <div class="true-img">
-                 <img src="images/true-4.png" alt="">
-               </div>
-               <div class="true-bx-txt">
-                 <h5>ROAD FREIGHT</h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <!-- true end -->
-     <!-- testimonial start -->
-       <!--  Testimonial Section Start -->
-   <section class="testimonial-sec all-section ">
-    <div class="container ">
-        <div class="sec-head wow slideInDown">
-            <h2>What Client Says</h2>
-        </div>
-        <div class="row ">
-            <div class="col-lg-12 ">
-                <div class="testi-slider wow slideInLeft">
-                    <div>
-                      <div class="testimonial-back">
-                        <div class="testimonial-box ">
-                            <div class="testimonial-imag ">
-                                <img src="images/ts-1.jpg " alt=" " class="ts-1 " />
-                            </div>
-                            <div class="testimonial-text ">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
-                                <h4>John Smith</h4>
-                                <h5>Manager</h5>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div>
-                      <div class="testimonial-back">
-                        <div class="testimonial-box ">
-                            <div class="testimonial-imag ">
-                                <img src="images/ts-2.jpg " alt=" " class="ts-2 " />
-                            </div>
-                            <div class="testimonial-text ">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
-                                <h4>John Smith</h4>
-                                <h5>Manager</h5>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div>
-                      <div class="testimonial-back">
-                        <div class="testimonial-box ">
-                            <div class="testimonial-imag ">
-                                <img src="images/ts-3.jpg " alt=" " class="ts-3 " />
-                            </div>
-                            <div class="testimonial-text ">
-                                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
-                                <h4>John Smith</h4>
-                                <h5>Manager</h5>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                        <div class="testimonial-back">
-                          <div class="testimonial-box ">
-                              <div class="testimonial-imag ">
-                                  <img src="images/ts-2.jpg " alt=" " class="ts-2 " />
-                              </div>
-                              <div class="testimonial-text ">
-                                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla </p>
-                                  <h4>John Smith</h4>
-                                  <h5>Manager</h5>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
+          <!-- Section portal End -->
+
+
+
+          <!-- Section Art Start -->
+          <section>
+            <div class="art">
+              <div class="container">
+                <div class="row">
+                  <div class="heading-different wow fadeInLeftBig" data-wow-duration="2s">
+                    <h2>State of the Art <br>Technology</h2>
+                  </div>
                 </div>
+                <div class="row">
+                  <div class="artslid">
+                    @foreach ( $slider_2 as $slider )
+                <div>
+                    <div class="img-art">
+                      <img src="{{ $slider->primary_image }}" alt="img">
+                      <h5>{{ $slider->title }}</h5>
+                    </div>
+                    </div>
+                    @endforeach
+
+
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
-</section>
+          </section>
+
+
+
+          <!-- Section Art End -->
+
+
+
+
+          <!-- Section Router Start -->
+          <section>
+            <div class="router">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-lg-8 col-12">
+                    <div class="text-router wow fadeInLeft" data-wow-duration="2s">
+                      <h2>{{ $keyfeatures->title }}</h2>
+                       <div class="maindv-routertext">
+                         <ul>
+                           <h2>{{ $keyfeatures->subtitle }}</h2>
+                          {!! $keyfeatures->description !!}
+                         </ul>
+                         <ul>
+                           <h2>{{ $flyover->subtitle }}</h2>
+                           {!! $flyover->description !!}
+                         </ul>
+                       </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-lg-4 col-12 p-0">
+                    <div class="router-img wow fadeInRight" data-wow-duration="2s">
+                      <img src="{{ $flyover->primary_image }}" alt="img">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- Section Router end -->
+
 @endsection
 
 @section('js')
-<script>
-   vhjhvvvvvv
-</script>
+    <script>
+        vhjhvvvvvv
+    </script>
 @endsection
