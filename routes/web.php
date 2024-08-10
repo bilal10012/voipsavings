@@ -24,6 +24,8 @@ Route::any('/contact-us', 'web\HomeController@contactUsPage')->name('contactUsPa
 Route::any('/about', 'web\HomeController@about')->name('about');
 Route::any('/gallery', 'web\HomeController@Gallery')->name('gallery');
 Route::any('/service', 'web\HomeController@Service')->name('service');
+Route::get('/services/{slug}', 'web\HomeController@ShowService')->name('show.service');
+
 Route::any('/pricing', 'web\HomeController@pricing')->name('pricing');
 Route::any('/customer', 'web\HomeController@customer')->name('customer');
 // Route::any('/service', 'web\HomeController@fulfilment')->name('fulfilment');
@@ -79,6 +81,7 @@ Route::prefix('panel')->name('admin.')->group(function () {
         Route::get('pricing/{id}/feature', 'Admin\FulfilmentController@feature')->name('pricing.feature');
         Route::get('feature/{id}/feature', 'Admin\TestimonialController@feature')->name('testimonial.feature');
         Route::resource('gallery', 'Admin\GalleryController');
+
         Route::post('gallery/upload/{id}', 'Admin\GalleryController@uploadGallery')->name('gallery.upload');
         Route::resource('our-work', 'Admin\WorkController');
         Route::post('our-work/upload/{id}', 'Admin\WorkController@uploadWork')->name('our-work.upload');

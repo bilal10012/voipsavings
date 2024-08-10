@@ -26,10 +26,10 @@
 @section('content')
     <div class="content">
         <h2 class="content-heading">Adding new Service <a href="{{route('admin.service.index')}}" class="btn btn-alt-primary pull-right">Back</a></h2>
-        
+
         <form method="post" action="{{route('admin.service.store')}}" enctype="multipart/form-data">
             <div class="row gutters-tiny">
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div class="block block-rounded block-themed">
                         <div class="block-header bg-gd-primary">
                             <h3 class="block-title">Service Information</h3>
@@ -49,16 +49,7 @@
                                     @endif
                                 </div>
                             </div>
-                       
-                            
-                        </div>
-                    </div>
-                
-                
-                   
-                
-
-                    <div class="form-group row">
+                            <div class="form-group row">
                                 <div class="col-md-12">
                                     <div class="block-content block-content-full p-0">
                                         <label>Service Description</label>
@@ -69,7 +60,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="block block-rounded block-themed">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="block block-rounded block-themed">
                         <div class="block-header bg-gd-primary">
                             <h3 class="block-title">Services Image</h3>
                         </div>
@@ -87,9 +82,7 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- <div class="block block-rounded block-themed">
+                     <div class="block block-rounded block-themed">
                         <div class="block-header bg-gd-primary">
                             <h3 class="block-title">Blogs  Inner Image</h3>
                         </div>
@@ -106,30 +99,20 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="block block-rounded block-themed">
                         <div class="block-content block-content-full">
                             @if(auth()->user()->hasRole('Administrator'))
                                 <div class="form-group row text-center">
-                                    <label class="col-12">Published</label>
+                                    <label class="col-12">is_featured</label>
                                     <div class="col-12">
                                         <label class="css-control css-control-success css-switch">
-                                            <input type="checkbox" class="css-control-input" value="checked" name="is_active" {{(old('is_active'))? (old('is_active') == 'checked')? 'checked': '':''}}>
+                                            <input type="checkbox" class="css-control-input" value="checked" name="is_featured" {{(old('is_featured'))? (old('is_featured') == 'checked')? 'checked': '':''}}>
                                             <span class="css-control-indicator"></span>
                                         </label>
                                     </div>
                                 </div>
                             @endif
-                                <div>
-                                    <select name="dropdown" id="dropdown">
-                                        <option value="">Select an option</option>
-                                        <option value="option1">Option 1</option>
-                                        <option value="option2">Option 2</option>
-                                        <option value="option3">Option 3</option>
-                                        <option value="option4">Option 4</option>
-                                    </select>
-                                    
-                                </div>
 
                             <div class="row gutters-tiny items-push">
                                 <div class="col-sm-12 col-xl-12 mb-0">
@@ -157,7 +140,7 @@
 <script src="{{asset('a-asset/js/plugins/select2.full.min.js')}}"></script>
 <script src="{{asset('a-asset/js/plugins/summernote-bs4.min.js')}}"></script>
 <script>
- 
+
     jQuery('.js-select2:not(.js-select2-enabled)').each((index, element) => {
         let el = jQuery(element);
         el.addClass('js-select2-enabled').select2({
@@ -181,7 +164,7 @@
         tags: true,
         tokenSeparators: [',']
     })
-   
+
     function itemType(e) {
         if(e.value == 'single') {
             $('.item-count').css('display', 'none');

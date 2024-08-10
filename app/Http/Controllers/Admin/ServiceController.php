@@ -7,9 +7,11 @@ use App\Tags;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Session;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
+
 {
     public function __construct()
     {
@@ -27,22 +29,23 @@ class ServiceController extends Controller
     }
 
     public function store(Request $request) {
-        $validator = Validator::make($request->all(), [ 
-            'title' => 'required|string|max:255',        
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|string|max:255',
              'description'=>'required',
              'primaryImage' => 'required|mimes:jpeg,jpg,png|required|max:500000',
+             'inner_image' => 'required|mimes:jpeg,jpg,png|required|max:500000',
             //  'inner_image' => 'required|mimes:jpeg,jpg,png|required|max:500000',
 
 
         ],
-        [ 
-            'title.required' => 'Please provide Title ',  
+        [
+            'title.required' => 'Please provide Title ',
             'title.max' => 'title can not have more than :max characters.',
             'description.required'=>'Description Is Required',
             'primaryImage.required' => 'Please provide service Primary Image',
             'primaryImage.mimes' => 'Please provide service Primary Image In jpeg,png,jpg Formats',
-            // 'inner_image.required' => 'Please provide service Detail Image',
-            // 'inner_image.mimes' => 'Please provide service Detail Image In jpeg,png,jpg Formats',
+            'inner_image.required' => 'Please provide service Detail Image',
+            'inner_image.mimes' => 'Please provide service Detail Image In jpeg,png,jpg Formats',
         ]);
         if ($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -50,13 +53,18 @@ class ServiceController extends Controller
         $service =  new Service();
         $service->title = $request->input('title');
         $service->description = $request->input('description');
-        $service->is_active = ($request->input('is_active') == 'checked') ? 1 : 0;
+        $service->is_featured = ($request->input('is_featured') == 'checked') ? 1 : 0;
         if ($request->hasFile('primaryImage')) {
             $file = $request->file('primaryImage');
             $image = upload($file, 1280, 426, 'services');
             $service->primary_image = $image;
         }
-    
+        if ($request->hasFile('inner_image')) {
+            $file = $request->file('inner_image');
+            $image_1 = upload($file, 1280, 426, 'services');
+            $service->inner_image = $image_1;
+        }
+
         $service->save();
         Session::flash('success','Service Added Successfully');
         return redirect()->route('admin.service.index');
@@ -70,15 +78,15 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service)
     {
-        $validator = Validator::make($request->all(), [ 
+        $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description'=>'required',
             'primaryImage' => 'mimes:jpeg,jpg,png|max:500000',
             // 'inner_image' => 'mimes:jpeg,jpg,png|max:500000',
 
         ],
-        [ 
-            'title.required' => 'Please provide Title ',  
+        [
+            'title.required' => 'Please provide Title ',
             'title.max' => 'title can not have more than :max characters.',
             'description.required'=>'Description Is Required',
             'primaryImage.mimes' => 'Please provide Service Primary Image In jpeg,png,jpg Formats',
@@ -89,7 +97,8 @@ class ServiceController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
         $service->title = ($request->input('title') != null)? $request->input('title'): $service->title;
-        $service->description = ($request->input('description') != null)? $request->input('description'): $service->description;  
+        $service->slug = Str::slug($request->input('title'), '-');
+        $service->description = ($request->input('description') != null)? $request->input('description'): $service->description;
         $service->is_active = (isset($request->is_active))? 1: 0;
 
         if ($request->hasFile('primaryImage')) {

@@ -73,7 +73,7 @@
                      </div>
                      <div class="col-md-6 d-none d-md-block">
                          <div class="head-logo">
-                             <a href="{{ route('webIndexPage') }}"><img src="{{asset ('web-assets/images/logo.png')}}" alt="img"></a>
+                             <a href="{{ route('webIndexPage') }}"><img src="{{ asset(getConfig('logo')) }}" alt="img"></a>
                          </div>
                      </div>
                      <div class="col-md-3 col-sm-6 col-xs-6 text-right">

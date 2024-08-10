@@ -103,7 +103,7 @@ class CmsController extends Controller
 
         if ($request->hasFile('footer_logo')) {
             $file = $request->file('footer_logo');
-            $image = upload($file, 360, 23);
+            $image = upload($file, 360, 200);
             $config = Config::where('key', 'footer_logo')->first();
         }
         $config->value = $image;

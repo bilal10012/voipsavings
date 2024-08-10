@@ -100,6 +100,31 @@ class GalleryController extends Controller
         return redirect()->back();
     }
 
+    public function updateSliderNames(Request $request)
+{
+    // Validate the request
+    $request->validate([
+        'sliderOneName' => 'nullable|string|max:255',
+        'sliderTwoName' => 'nullable|string|max:255',
+    ]);
+
+    $settings = Gallery::first();
+
+    if ($request->has('sliderOneName')) {
+        $settings->slider_one_name = $request->input('sliderOneName');
+    }
+
+    if ($request->has('sliderTwoName')) {
+        $settings->slider_two_name = $request->input('sliderTwoName');
+    }
+
+    $settings->save();
+
+    Session::flash('success', 'Slider names have been updated successfully!');
+    return redirect()->route('admin.gallery.index'); // Adjust the route as necessary
+}
+
+
 
 
 

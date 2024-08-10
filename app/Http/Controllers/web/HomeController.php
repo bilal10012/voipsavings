@@ -117,13 +117,19 @@ class HomeController extends Controller
     {
 
         $banner= Banner::where('page','Services Page')->first();
-        $services= Service::where('is_active',1)->get();
-        $fulfilment= Fulfilment::all();
-        $testimonial=Testimonial::all();
+        $services= Service::where('is_featured',1)->get();
 
-        // dd($fulfilment);
-       return view('front.service',compact('banner','services','fulfilment','testimonial'));
+
+
+       return view('front.service',compact('banner','services'));
     }
+    public function ShowService($slug)
+{
+    $banner= Banner::where('page','Services Page')->first();
+    $service_detail = Service::where('slug', $slug)->firstOrFail();
+    return view('front.service-detail', compact('service_detail','banner'));
+}
+
     public function pricing()
     {
 
